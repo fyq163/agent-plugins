@@ -1,0 +1,44 @@
+{
+  "name": "fyq-skills",
+  "interface": {
+    "displayName": "FYQ Skills Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "devop-ssh",
+      "source": {
+        "source": "local",
+        "path": "./plugins/devop-ssh"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "DevOps"
+    },
+    {
+      "name": "mcp-ssh-manager",
+      "source": {
+        "source": "local",
+        "path": "./plugins/mcp-ssh-manager"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "DevOps"
+    },
+    {
+      "name": "istoresos",
+      "source": {
+        "source": "local",
+        "path": "./plugins/istoresos"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "DevOps"
+    }
+  ]
+}
