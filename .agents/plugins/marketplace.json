@@ -20,7 +20,7 @@
       "name": "mcp-ssh-manager",
       "source": {
         "source": "local",
-        "path": "./plugins/mcp-ssh-manager"
+        "path": "./plugins/codex-plugin-ssh-manager"
       },
       "policy": {
         "installation": "AVAILABLE",

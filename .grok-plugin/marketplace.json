@@ -1,0 +1,48 @@
+{
+  "name": "fyq-skills",
+  "description": "FYQ personal skills & MCP servers for Grok Build",
+  "owner": {
+    "name": "fyq163"
+  },
+  "plugins": [
+    {
+      "name": "devop-ssh",
+      "description": "SSH access to personal VPS (osaka1/oracle1/osaka0/oracle0): deploy, healthcheck, logs, file copy, common pitfalls.",
+      "category": "development",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/fyq163/agent-plugins.git",
+        "path": "./plugins/devop-ssh",
+        "sha": "96890ef34d8cce251b9007feb0cb5367cf4441db"
+      },
+      "homepage": "https://github.com/fyq163/agent-plugins",
+      "keywords": ["ssh", "vps", "devops", "deploy", "healthcheck"]
+    },
+    {
+      "name": "mcp-ssh-manager",
+      "description": "SSH remote-server management over MCP for Claude Code / Codex (37 tools: exec, transfer, DB, backups, health monitoring).",
+      "category": "development",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/fyq163/agent-plugins.git",
+        "path": "./plugins/codex-plugin-ssh-manager",
+        "sha": "7f810fb0a77037952a2ea1c72b6d473aeda2d130"
+      },
+      "homepage": "https://github.com/fyq163/mcp-ssh-manager-as-plugins",
+      "keywords": ["mcp", "ssh", "mcp-server", "remote", "devops"]
+    },
+    {
+      "name": "istoresos",
+      "description": "Router repair & OpenWrt/iStoreOS operations playbook: network, firewall, wireless troubleshooting, firmware dev (buildroot, ipk, LuCI).",
+      "category": "development",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/fyq163/agent-plugins.git",
+        "path": "./plugins/istoresos",
+        "sha": "e9580323bf7faf680e1c481be5912cb9dbf23c74"
+      },
+      "homepage": "https://github.com/fyq163/router-repair",
+      "keywords": ["router", "openwrt", "istoreos", "network", "firmware"]
+    }
+  ]
+}
