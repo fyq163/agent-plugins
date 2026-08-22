@@ -3,7 +3,7 @@
 	url = https://github.com/fyq163/mcp-ssh-manager-as-plugins.git
 [submodule "plugins/devops-ssh"]
 	path = plugins/devops-ssh
-	url = git@ssh.dev.azure.com:v3/sebfan/oracle-devops/devops-ssh-skill
+	url = https://sebfan@dev.azure.com/sebfan/oracle-devops/_git/devops-ssh-skill
 [submodule "plugins/istoresos"]
 	path = plugins/istoresos
 	url = https://github.com/fyq163/router-repair.git

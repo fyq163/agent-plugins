@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "devop-ssh",
+      "name": "devops-ssh",
       "source": {
         "source": "local",
-        "path": "./plugins/devop-ssh"
+        "path": "./plugins/devops-ssh"
       },
       "policy": {
         "installation": "AVAILABLE",

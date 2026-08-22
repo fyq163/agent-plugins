@@ -8,7 +8,7 @@ browse and install them from any machine.
 
 | Plugin | Type | Version | What it does |
 |--------|------|---------|--------------|
-| **devop-ssh** | skill | 1.0.0 | SSH access to personal VPS (osaka1/oracle1/osaka0/oracle0): deploy, healthcheck, logs, file copy, common pitfalls. |
+| **devops-ssh** | skill | 1.0.0 | SSH access to personal VPS (osaka1/oracle1/osaka0/oracle0): deploy, healthcheck, logs, file copy, common pitfalls. |
 | **r2-sync** | skill + script | 1.0.0 | Bidirectional file sync between a local dir and Cloudflare R2 (three-way merge, conflict resolution). Replaces Obsidian sync. |
 | **mcp-ssh-manager** | MCP server | 3.8.0 | SSH remote-server management over MCP for Claude Code / Codex (commands, file transfer, DB, backups, health). |
 | **istoresos** | skill | 1.0.0 | Router repair and OpenWrt/iStoreOS operations playbook: DNS/DHCP/firewall/WAN/LAN/wireless troubleshooting, firmware dev (buildroot, ipk, LuCI), router config. |
@@ -35,7 +35,7 @@ codex plugin marketplace add fyq163/windows_automation --ref plug-in
 ### 2. Install a plugin
 
 ```bash
-codex plugin add devop-ssh
+codex plugin add devops-ssh
 codex plugin add r2-sync
 codex plugin add mcp-ssh-manager
 codex plugin add istoresos
@@ -76,9 +76,9 @@ codex plugin marketplace remove fyq-skills
 ```
 .agents/plugins/marketplace.json     # the catalog (points at ./plugins/<name>)
 plugins/
-  devop-ssh/
+  devops-ssh/
     .codex-plugin/plugin.json        # manifest
-    skills/devop-ssh/SKILL.md        # self-contained copy
+    skills/devops-ssh/SKILL.md        # self-contained copy
   r2-sync/
     .codex-plugin/plugin.json
     skills/r2-sync/SKILL.md

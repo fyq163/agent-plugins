@@ -6,12 +6,12 @@
   },
   "plugins": [
     {
-      "name": "devop-ssh",
+      "name": "devops-ssh",
       "description": "SSH access to personal VPS (osaka1/oracle1/osaka0/oracle0): deploy, healthcheck, logs, file copy, common pitfalls.",
       "category": "development",
       "source": {
         "source": "url",
-        "url": "git@ssh.dev.azure.com:v3/sebfan/oracle-devops/devops-ssh-skill",
+        "url": "https://sebfan@dev.azure.com/sebfan/oracle-devops/_git/devops-ssh-skill",
         "path": "./",
         "sha": "3a0e065039f5ceb466dd176236df17952ee94182"
       },
