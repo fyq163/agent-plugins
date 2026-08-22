@@ -77,5 +77,7 @@ The parent repo pushes fine over SSH.
 codex plugin marketplace add /Users/fyq/PycharmProjects/agent-plugins
 codex plugin add <name>@fyq-agent-plugins
 ```
-Codex does NOT auto-run `npm install` for local/git plugins. `mcp-ssh-manager`
-needs its deps installed manually in the installed cache dir if you run it.
+Codex does NOT auto-run `npm install` for local/git plugins. `mcp-ssh-manager`'s
+`.mcp.json` launches `start.sh`, which installs runtime deps on first run (only
+when `node_modules` is absent) before starting the server — re-installs are
+self-healing, no manual `npm install` needed.
