@@ -13,7 +13,7 @@
         "source": "url",
         "url": "https://github.com/fyq163/agent-plugins.git",
         "path": "./plugins/devop-ssh",
-        "sha": "96890ef34d8cce251b9007feb0cb5367cf4441db"
+        "sha": "62b1c47b194c58ac3f6d09fd62c3d9a8a88f7528"
       },
       "homepage": "https://github.com/fyq163/agent-plugins",
       "keywords": [
@@ -32,7 +32,7 @@
         "source": "url",
         "url": "https://github.com/fyq163/agent-plugins.git",
         "path": "./plugins/codex-plugin-ssh-manager",
-        "sha": "13008622a6a074cfa8e9dc9ba58330e28f8823b6"
+        "sha": "62b1c47b194c58ac3f6d09fd62c3d9a8a88f7528"
       },
       "homepage": "https://github.com/fyq163/mcp-ssh-manager-as-plugins",
       "keywords": [
@@ -51,7 +51,7 @@
         "source": "url",
         "url": "https://github.com/fyq163/agent-plugins.git",
         "path": "./plugins/istoresos",
-        "sha": "e9580323bf7faf680e1c481be5912cb9dbf23c74"
+        "sha": "62b1c47b194c58ac3f6d09fd62c3d9a8a88f7528"
       },
       "homepage": "https://github.com/fyq163/router-repair",
       "keywords": [
