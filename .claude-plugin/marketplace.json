@@ -1,6 +1,6 @@
 {
-  "name": "fyq-skills",
-  "description": "FYQ personal skills & MCP servers for Grok Build",
+  "name": "fyq-agent-plugins",
+  "description": "FYQ personal skills & MCP servers for Claude Code / Codex / Grok",
   "owner": {
     "name": "fyq163"
   },
@@ -11,53 +11,29 @@
       "category": "development",
       "source": {
         "source": "url",
-        "url": "https://sebfan@dev.azure.com/sebfan/oracle-devops/_git/devops-ssh-skill",
+        "url": "https://dev.azure.com/sebfan/oracle-devops/_git/devops-ssh-skill",
         "sha": "c4b0bba05e4bdf3a83a9e942a280394244318325"
-      },
-      "homepage": "https://dev.azure.com/sebfan/oracle-devops/_git/devops-ssh-skill",
-      "keywords": [
-        "ssh",
-        "vps",
-        "devops",
-        "deploy",
-        "healthcheck"
-      ]
+      }
     },
     {
       "name": "mcp-ssh-manager",
       "description": "SSH remote-server management over MCP for Claude Code / Codex (37 tools: exec, transfer, DB, backups, health monitoring).",
       "category": "development",
       "source": {
-        "source": "url",
-        "url": "https://github.com/fyq163/mcp-ssh-manager-as-plugins.git",
+        "source": "github",
+        "repo": "fyq163/mcp-ssh-manager-as-plugins",
         "sha": "d26815dd8bc8d17380808a3e891b6a81d90d708c"
-      },
-      "homepage": "https://github.com/fyq163/mcp-ssh-manager-as-plugins",
-      "keywords": [
-        "mcp",
-        "ssh",
-        "mcp-server",
-        "remote",
-        "devops"
-      ]
+      }
     },
     {
       "name": "istoresos",
       "description": "Router repair & OpenWrt/iStoreOS operations playbook: network, firewall, wireless troubleshooting, firmware dev (buildroot, ipk, LuCI).",
       "category": "development",
       "source": {
-        "source": "url",
-        "url": "https://github.com/fyq163/router-repair.git",
+        "source": "github",
+        "repo": "fyq163/router-repair",
         "sha": "e993444a26a1a53ff78ad279376d517f21b6a259"
-      },
-      "homepage": "https://github.com/fyq163/router-repair",
-      "keywords": [
-        "router",
-        "openwrt",
-        "istoreos",
-        "network",
-        "firmware"
-      ]
+      }
     }
   ]
 }
