@@ -1,106 +1,91 @@
-# Skills Marketplace
+# FYQ Agent Plugins — Marketplace
 
-This repo doubles as an [OpenAI Codex / ChatGPT plugin marketplace](https://developers.openai.com/plugins).
-It bundles my personal skills, scripts, and MCP servers into installable plugins so I can
-browse and install them from any machine.
+This repo is a dual plugin marketplace for **OpenAI Codex** and **Grok Build**.
+It bundles personal skills and MCP servers as installable plugins.
 
-## What's inside (discovery)
+- Codex catalog: `.agents/plugins/marketplace.json` (local source → `./plugins/<name>`)
+- Grok catalog: `.grok-plugin/marketplace.json` (each plugin fetched from its own repo, pinned to a `sha`)
 
-| Plugin | Type | Version | What it does |
-|--------|------|---------|--------------|
-| **devops-ssh** | skill | 1.0.0 | SSH access to personal VPS (osaka1/oracle1/osaka0/oracle0): deploy, healthcheck, logs, file copy, common pitfalls. |
-| **r2-sync** | skill + script | 1.0.0 | Bidirectional file sync between a local dir and Cloudflare R2 (three-way merge, conflict resolution). Replaces Obsidian sync. |
-| **mcp-ssh-manager** | MCP server | 3.8.0 | SSH remote-server management over MCP for Claude Code / Codex (commands, file transfer, DB, backups, health). |
-| **istoresos** | skill | 1.0.0 | Router repair and OpenWrt/iStoreOS operations playbook: DNS/DHCP/firewall/WAN/LAN/wireless troubleshooting, firmware dev (buildroot, ipk, LuCI), router config. |
+## Plugins
 
-## Install from GitHub (one command)
+| Plugin | Type | What it does |
+|--------|------|--------------|
+| **devops-ssh** | skill | SSH access to personal VPS (osaka1/oracle1/osaka0/oracle0): deploy, healthcheck, logs, file copy, common pitfalls. |
+| **mcp-ssh-manager** | MCP server | SSH remote-server management over MCP for Claude Code / Codex (37 tools: exec, transfer, DB, backups, health monitoring). Needs Node.js deps installed (see below). |
+| **istoresos** | skill | Router repair & OpenWrt/iStoreOS operations playbook: network, firewall, wireless troubleshooting, firmware dev (buildroot, ipk, LuCI). |
 
-### 1. Add the marketplace
+## Install on Codex
 
-```bash
-# clone-on-demand from GitHub (Codex fetches it for you)
-# NOTE: marketplace lives on the `plug-in` branch (main has no marketplace files)
-codex plugin marketplace add fyq163/windows_automation --ref plug-in
-
-# optional: only fetch the marketplace + plugin files (skips the rest of the repo)
-codex plugin marketplace add fyq163/windows_automation --ref plug-in --sparse .agents/plugins --sparse plugins
-```
-
-To pin a branch/ref (the marketplace lives on `plug-in`, not `main`):
+Use the **local** marketplace (recommended). Plugins live in `plugins/` as git
+submodules, which are NOT expanded when Codex clones a marketplace from a remote
+URL — so a Git-marketplace install would fetch empty plugin dirs. The local path
+avoids that.
 
 ```bash
-codex plugin marketplace add fyq163/windows_automation --ref plug-in
+# from the repo root, or use the absolute path
+codex plugin marketplace add /Users/fyq/PycharmProjects/agent-plugins
+
+codex plugin add devops-ssh@fyq-agent-plugins
+codex plugin add mcp-ssh-manager@fyq-agent-plugins
+codex plugin add istoresos@fyq-agent-plugins
 ```
 
-### 2. Install a plugin
+### mcp-ssh-manager needs its deps installed manually
+
+Codex does **not** auto-run `npm install` for local/git plugins. After installing,
+install the runtime deps once in the installed cache dir, or the MCP server
+crashes on startup (`connection closed: initialize response`):
 
 ```bash
-codex plugin add devops-ssh
-codex plugin add r2-sync
-codex plugin add mcp-ssh-manager
-codex plugin add istoresos
+cd ~/.codex/plugins/cache/fyq-agent-plugins/mcp-ssh-manager/3.8.0
+npm install --omit=dev
 ```
 
-Or list everything available first:
+### Refreshing after a submodule update
+
+`codex plugin marketplace upgrade` only works for **Git** marketplaces; this is a
+local one, so it does nothing here. To pick up a plugin code change after you
+update its submodule, re-install the plugin:
 
 ```bash
-codex plugin list
+codex plugin remove mcp-ssh-manager@fyq-agent-plugins
+codex plugin add mcp-ssh-manager@fyq-agent-plugins
+# then re-run the npm install step above
 ```
 
-### 3. In the ChatGPT / Codex desktop app
+## Install on Grok
 
-1. Open the **Plugins Directory**.
-2. Choose **Add marketplace** → point it at `fyq163/windows_automation`.
-3. Browse the curated list and install with one click.
-
-## Manage marketplaces
+Grok reads `.grok-plugin/marketplace.json`. Add this repo as a marketplace in
+Grok Build (point it at the GitHub repo `fyq163/agent-plugins`); Grok fetches
+each plugin from the `url` + `sha` + `path` listed in that catalog, so each
+plugin is pinned to a specific commit of its own source repo.
 
 ```bash
-codex plugin marketplace list          # see configured sources
-codex plugin marketplace upgrade        # refresh snapshots
-codex plugin marketplace remove fyq163/windows_automation
+# conceptual — done in the Grok Build UI by adding the marketplace URL
+# then install individual plugins from the directory
 ```
 
-## Local testing (before pushing)
-
-```bash
-# from the repo root
-codex plugin marketplace add .
-codex plugin list
-# when done:
-codex plugin marketplace remove fyq-skills
-```
+Notes:
+- `mcp-ssh-manager` and `istoresos` are on GitHub and fetch fine.
+- `devops-ssh` lives in **Azure DevOps** (`sebfan/oracle-devops/_git/devops-ssh-skill`).
+  Grok may not be able to fetch it (GitHub-only), so it may not appear / install.
+- Like on Codex, `mcp-ssh-manager` needs its Node.js deps; install them in the
+  Grok plugin cache after install.
 
 ## How it's structured
 
 ```
-.agents/plugins/marketplace.json     # the catalog (points at ./plugins/<name>)
+.agents/plugins/marketplace.json     # Codex catalog (local sources)
+.grok-plugin/marketplace.json        # Grok catalog (url + sha + path)
 plugins/
-  devops-ssh/
-    .codex-plugin/plugin.json        # manifest
-    skills/devops-ssh/SKILL.md        # self-contained copy
-  r2-sync/
+  devops-ssh/                       # git submodule (Azure DevOps)
+  codex-plugin-ssh-manager/         # git submodule (GitHub, feat branch)
     .codex-plugin/plugin.json
-    skills/r2-sync/SKILL.md
-    skills/r2-sync/sync.py           # engine (copied in, self-contained)
-    skills/r2-sync/requirements.txt
-  mcp-ssh-manager/
-    .codex-plugin/plugin.json
-    .mcp.json                        # bundled MCP server (pulled via npx)
-  istoresos/
-    .codex-plugin/plugin.json
-    skills/istoresos/               # full skill copy (SKILL.md + prompts/references/templates/tools)
+    .mcp.json                       # launches node src/index.js
+    src/index.js
+  istoresos/                        # git submodule (GitHub)
 ```
 
-The `plugins/` tree is **self-contained** — it does not depend on the `skills/`
-git submodules, so a fresh `git clone` + `codex plugin marketplace add` works
-without recursive submodule init.
-
-## Add a new plugin
-
-1. Create `plugins/<name>/.codex-plugin/plugin.json` (see existing ones).
-2. Add `skills/`, `.mcp.json`, or `hooks/` as needed (all paths relative to the
-   plugin root, start with `./`).
-3. Register it in `.agents/plugins/marketplace.json` under `plugins[]` with
-   `source.path: "./plugins/<name>"`.
-4. Commit and push; everyone gets it on next `codex plugin marketplace upgrade`.
+The `plugins/` tree is made of git submodules. To update a plugin, work inside
+its submodule, push there, then update the parent pointer (and the Grok `sha`)
+in this repo.

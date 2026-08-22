@@ -78,6 +78,6 @@ codex plugin marketplace add /Users/fyq/PycharmProjects/agent-plugins
 codex plugin add <name>@fyq-agent-plugins
 ```
 Codex does NOT auto-run `npm install` for local/git plugins. `mcp-ssh-manager`'s
-`.mcp.json` launches `start.sh`, which installs runtime deps on first run (only
-when `node_modules` is absent) before starting the server — re-installs are
-self-healing, no manual `npm install` needed.
+`.mcp.json` launches `node src/index.js` directly; you must `npm install --omit=dev`
+in the installed cache dir (`~/.codex/plugins/cache/fyq-agent-plugins/mcp-ssh-manager/<version>/`)
+or the MCP server crashes on startup (`connection closed: initialize response`).
