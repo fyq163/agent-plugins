@@ -26,7 +26,7 @@
         "source": "url",
         "url": "https://github.com/fyq163/mcp-ssh-manager-as-plugins.git",
         "path": "./",
-        "sha": "268399bf5b7831f60d6f45555f74b5ae19ac1a2a"
+        "sha": "ec3d22602afdfe3dc6762f6fde4cca45dbefa72e"
       },
       "homepage": "https://github.com/fyq163/mcp-ssh-manager-as-plugins",
       "keywords": ["mcp", "ssh", "mcp-server", "remote", "devops"]
