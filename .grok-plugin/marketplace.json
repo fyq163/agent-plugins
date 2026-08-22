@@ -11,18 +11,12 @@
       "category": "development",
       "source": {
         "source": "url",
-        "url": "https://github.com/fyq163/agent-plugins.git",
-        "path": "./plugins/devop-ssh",
-        "sha": "94435db12d806b7673233da9d72f08394fdb1fb6"
+        "url": "https://dev.azure.com/sebfan/oracle-devops/_git/devops-ssh-skill",
+        "path": "./",
+        "sha": "3a0e065039f5ceb466dd176236df17952ee94182"
       },
-      "homepage": "https://github.com/fyq163/agent-plugins",
-      "keywords": [
-        "ssh",
-        "vps",
-        "devops",
-        "deploy",
-        "healthcheck"
-      ]
+      "homepage": "https://dev.azure.com/sebfan/oracle-devops/_git/devops-ssh-skill",
+      "keywords": ["ssh", "vps", "devops", "deploy", "healthcheck"]
     },
     {
       "name": "mcp-ssh-manager",
@@ -30,18 +24,12 @@
       "category": "development",
       "source": {
         "source": "url",
-        "url": "https://github.com/fyq163/agent-plugins.git",
-        "path": "./plugins/codex-plugin-ssh-manager",
-        "sha": "94435db12d806b7673233da9d72f08394fdb1fb6"
+        "url": "https://github.com/fyq163/mcp-ssh-manager-as-plugins.git",
+        "path": "./",
+        "sha": "f0ecabfd2db329a32a32e8129077c74ef28bc632"
       },
       "homepage": "https://github.com/fyq163/mcp-ssh-manager-as-plugins",
-      "keywords": [
-        "mcp",
-        "ssh",
-        "mcp-server",
-        "remote",
-        "devops"
-      ]
+      "keywords": ["mcp", "ssh", "mcp-server", "remote", "devops"]
     },
     {
       "name": "istoresos",
@@ -49,18 +37,12 @@
       "category": "development",
       "source": {
         "source": "url",
-        "url": "https://github.com/fyq163/agent-plugins.git",
-        "path": "./plugins/istoresos",
-        "sha": "94435db12d806b7673233da9d72f08394fdb1fb6"
+        "url": "https://github.com/fyq163/router-repair.git",
+        "path": "./",
+        "sha": "283b3c1ba6495fc550a21ece4d4cef2e2797e2fa"
       },
       "homepage": "https://github.com/fyq163/router-repair",
-      "keywords": [
-        "router",
-        "openwrt",
-        "istoreos",
-        "network",
-        "firmware"
-      ]
+      "keywords": ["router", "openwrt", "istoreos", "network", "firmware"]
     }
   ]
 }
