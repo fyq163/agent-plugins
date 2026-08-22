@@ -1,8 +1,8 @@
 [submodule "plugins/codex-plugin-ssh-manager"]
 	path = plugins/codex-plugin-ssh-manager
 	url = https://github.com/fyq163/mcp-ssh-manager-as-plugins.git
-[submodule "plugins/devop-ssh"]
-	path = plugins/devop-ssh
+[submodule "plugins/devops-ssh"]
+	path = plugins/devops-ssh
 	url = git@ssh.dev.azure.com:v3/sebfan/oracle-devops/devops-ssh-skill
 [submodule "plugins/istoresos"]
 	path = plugins/istoresos
