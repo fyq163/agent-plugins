@@ -11,7 +11,7 @@
       "category": "development",
       "source": {
         "source": "url",
-        "url": "https://dev.azure.com/sebfan/oracle-devops/_git/devops-ssh-skill",
+        "url": "git@ssh.dev.azure.com:v3/sebfan/oracle-devops/devops-ssh-skill",
         "path": "./",
         "sha": "3a0e065039f5ceb466dd176236df17952ee94182"
       },
