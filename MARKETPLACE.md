@@ -9,8 +9,12 @@ This repo is a triple marketplace for **Codex** (`.agents/plugins/marketplace.js
 | Plugin | Sources | What it does |
 |--------|---------|--------------|
 | **devops-ssh** | Codex: local, Claude: github/url, Grok: url | SSH access to personal VPS (osaka1/oracle1/osaka0/oracle0): deploy, healthcheck, logs, file copy, common pitfalls. |
-| **mcp-ssh-manager** | Codex: local, Claude: github/url, Grok: url | SSH remote-server management over MCP for Claude Code / Codex (37 tools: exec, transfer, DB, backups, health monitoring). |
-| **istoresos** | Codex: local, Claude: github/url, Grok: url | Router repair & OpenWrt/iStoreOS operations playbook: network, firewall, wireless troubleshooting, firmware dev (buildroot, ipk, LuCI). |
+| **mcp-ssh-manager** | Codex, Claude: github/url, Grok: url | SSH remote-server management over MCP for Claude Code / Codex (37 tools: exec, transfer, DB, backups, health monitoring). |
+| **istoresos** | Codex, Claude: github/url, Grok: url | Router repair & OpenWrt/iStoreOS operations playbook: network, firewall, wireless troubleshooting, firmware dev (buildroot, ipk, LuCI). |
+| **i-have-adhd** | Codex |  |
+| **ponytail** | Codex |  |
+| **ponytail** | Codex |  |
+| **ponytail** | Codex |  |
 
 ## Install
 
