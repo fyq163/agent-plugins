@@ -74,10 +74,17 @@ The parent repo pushes fine over SSH.
 
 ## Local install (for testing)
 ```
-codex plugin marketplace add /Users/fyq/PycharmProjects/agent-plugins
+codex plugin marketplace add /Users/fyq/sources/agent-plugins
 codex plugin add <name>@fyq-agent-plugins
 ```
 Codex does NOT auto-run `npm install` for local/git plugins. `mcp-ssh-manager`'s
 `.mcp.json` launches `node src/index.js` directly; you must `npm install --omit=dev`
 in the installed cache dir (`~/.codex/plugins/cache/fyq-agent-plugins/mcp-ssh-manager/<version>/`)
 or the MCP server crashes on startup (`connection closed: initialize response`).
+
+**Codex 0.149.1 `${PLUGIN_ROOT}` bug:** that Codex version does not expand
+`${PLUGIN_ROOT}` in a plugin's `.mcp.json` args (it joins the literal onto the
+marketplace dir → `MODULE_NOT_FOUND` → same `connection closed` error). After any
+plugin (re)install/upgrade, patch the cached `.mcp.json` args to the absolute path:
+`~/.codex/plugins/cache/fyq-agent-plugins/mcp-ssh-manager/<version>/src/index.js`.
+The submodule source keeps `${PLUGIN_ROOT}` (correct syntax; fixed in newer Codex).
