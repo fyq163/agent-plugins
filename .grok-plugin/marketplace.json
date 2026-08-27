@@ -30,7 +30,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/fyq163/mcp-ssh-manager-as-plugins.git",
-        "sha": "0fd7167beaca6b4cee3b555df7ff3850eb786819"
+        "sha": "f9073d456915b08516baeb78cbb91b6d068edb95"
       },
       "homepage": "https://github.com/fyq163/mcp-ssh-manager-as-plugins",
       "keywords": [
