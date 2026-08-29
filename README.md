@@ -33,6 +33,55 @@ For the standalone shell write audit:
 codex plugin add command-audit@fyq-agent-plugins
 ```
 
+## Updating plugins
+
+Codex has no `plugin update` command — refresh then remove+re-add. Or just use
+the bundled script:
+
+```bash
+scripts/update-codex-plugins.sh                   # all plugins in the catalog
+scripts/update-codex-plugins.sh mcp-ssh-manager   # specific one(s)
+```
+
+## Reusing skills in other projects (symlink)
+
+Skills are just directories with a `SKILL.md`, so they can be shared across
+projects and assistants via symlinks instead of copies — a `git pull` upstream
+updates every project at once.
+
+Microsoft maintains [agent-skills](https://github.com/MicrosoftDocs/agent-skills) —
+193 production-ready Azure skills (19 service categories) in the standard
+`SKILL.md` format, auto-generated from Microsoft Learn and refreshed weekly.
+Clone it once:
+
+```bash
+git clone https://github.com/MicrosoftDocs/agent-skills.git ~/sources/agent-skills
+```
+
+Then symlink whatever you need into a project (Codex reads project skills from
+`{project}/.codex/skills/`, Cursor from `{project}/.cursor/skills/`):
+
+```bash
+PROJ=/path/to/your/project
+mkdir -p "$PROJ/.codex/skills" "$PROJ/.cursor/skills"
+
+# an Azure skill from agent-skills
+ln -s ~/sources/agent-skills/skills/azure-functions "$PROJ/.codex/skills/azure-functions"
+ln -s ~/sources/agent-skills/skills/azure-functions "$PROJ/.cursor/skills/azure-functions"
+
+# this repo's own skills work the same way, e.g. router-repair
+ln -s ~/sources/agent-plugins/plugins/istoresos "$PROJ/.codex/skills/router-repair"
+ln -s ~/sources/agent-plugins/plugins/istoresos "$PROJ/.cursor/skills/router-repair"
+```
+
+Notes:
+- Codex also supports a global dir at `~/.codex/skills/`; Cursor is project-level only.
+- Name the symlink after the skill's `name` field in `SKILL.md` frontmatter
+  (safest across assistants; note it can differ from the source dir name).
+- OpenCode is pickier: it drops skills whose frontmatter contains a `globs:`
+  field (see the istoresos wrapper in `~/.config/opencode/skills/` for the
+  workaround — cleaned `SKILL.md` + symlinked content dirs).
+
 ## Backup MCP servers
 
 These are the MCP servers I keep configured. Re-add them when rebuilding a machine.
