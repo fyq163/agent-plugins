@@ -58,26 +58,29 @@ Clone it once:
 git clone https://github.com/MicrosoftDocs/agent-skills.git ~/sources/agent-skills
 ```
 
-Then symlink whatever you need into a project (Codex reads project skills from
-`{project}/.codex/skills/`, Cursor from `{project}/.cursor/skills/`):
+Then symlink whatever you need into a project. Easiest: `cd` into the skills
+dir first — `ln -s <source>` then creates the link in the current dir named
+after the source's basename, nothing else to type:
 
 ```bash
-PROJ=/path/to/your/project
-mkdir -p "$PROJ/.codex/skills" "$PROJ/.cursor/skills"
+cd /path/to/your/project
+mkdir -p .codex/skills .cursor/skills   # one-time
 
-# an Azure skill from agent-skills
-ln -s ~/sources/agent-skills/skills/azure-functions "$PROJ/.codex/skills/azure-functions"
-ln -s ~/sources/agent-skills/skills/azure-functions "$PROJ/.cursor/skills/azure-functions"
+cd .codex/skills
+ln -s ~/sources/agent-skills/skills/azure-functions
+ln -s ~/sources/agent-plugins/plugins/istoresos router-repair   # explicit name only when renaming
 
-# this repo's own skills work the same way, e.g. router-repair
-ln -s ~/sources/agent-plugins/plugins/istoresos "$PROJ/.codex/skills/router-repair"
-ln -s ~/sources/agent-plugins/plugins/istoresos "$PROJ/.cursor/skills/router-repair"
+# bulk: link every Azure skill at once
+# ln -s ~/sources/agent-skills/skills/* .
+
+cd ../../.cursor/skills
+ln -s ~/sources/agent-skills/skills/azure-functions
 ```
 
 Notes:
 - Codex also supports a global dir at `~/.codex/skills/`; Cursor is project-level only.
-- Name the symlink after the skill's `name` field in `SKILL.md` frontmatter
-  (safest across assistants; note it can differ from the source dir name).
+- Name the link after the skill's `name` field in `SKILL.md` frontmatter
+  (the bare `ln -s <source>` form already does this when source dir name matches).
 - OpenCode is pickier: it drops skills whose frontmatter contains a `globs:`
   field (see the istoresos wrapper in `~/.config/opencode/skills/` for the
   workaround — cleaned `SKILL.md` + symlinked content dirs).
