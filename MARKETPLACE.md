@@ -8,6 +8,7 @@ This repo is a triple marketplace for **Codex** (`.agents/plugins/marketplace.js
 
 | Plugin | Sources | What it does |
 |--------|---------|--------------|
+| **command-audit** | Codex: local | Reminds Codex to use apply_patch instead of shell file-writing commands. |
 | **devops-ssh** | Codex: local, Claude: github/url, Grok: url | SSH access to personal VPS (osaka1/oracle1/osaka0/oracle0): deploy, healthcheck, logs, file copy, common pitfalls. |
 | **mcp-ssh-manager** | Codex, Claude: github/url, Grok: url | SSH remote-server management over MCP for Claude Code / Codex (37 tools: exec, transfer, DB, backups, health monitoring). |
 | **istoresos** | Codex, Claude: github/url, Grok: url | Router repair & OpenWrt/iStoreOS operations playbook: network, firewall, wireless troubleshooting, firmware dev (buildroot, ipk, LuCI). |
@@ -26,6 +27,7 @@ This repo is a triple marketplace for **Codex** (`.agents/plugins/marketplace.js
 codex plugin marketplace add /Users/fyq/PycharmProjects/agent-plugins
 codex plugin add devops-ssh@fyq-agent-plugins
 codex plugin add mcp-ssh-manager@fyq-agent-plugins
+codex plugin add command-audit@fyq-agent-plugins
 codex plugin add istoresos@fyq-agent-plugins
 ```
 

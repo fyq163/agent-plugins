@@ -15,6 +15,7 @@ agent-plugins/
 ├── .grok-plugin/marketplace.json      # Grok catalog (if you also use Grok)
 └── plugins/                           # actual plugin code (submodules)
     ├── codex-plugin-ssh-manager/
+    ├── command-audit/
     ├── devops-ssh/
     └── istoresos/
 ```
@@ -24,6 +25,12 @@ agent-plugins/
 ```bash
 codex plugin marketplace add /Users/fyq/sources/agent-plugins
 codex plugin add <name>@fyq-agent-plugins
+```
+
+For the standalone shell write audit:
+
+```bash
+codex plugin add command-audit@fyq-agent-plugins
 ```
 
 ## Backup MCP servers

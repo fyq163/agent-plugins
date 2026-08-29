@@ -1,0 +1,20 @@
+{
+  "name": "command-audit",
+  "version": "1.0.0",
+  "description": "Reminds Codex to use apply_patch instead of shell file-writing commands.",
+  "author": {
+    "name": "fyq163",
+    "url": "https://github.com/fyq163"
+  },
+  "license": "MIT",
+  "keywords": ["hooks", "command-audit", "apply-patch"],
+  "hooks": "./hooks.json",
+  "interface": {
+    "displayName": "Command Audit",
+    "shortDescription": "Audits shell commands before execution",
+    "longDescription": "Reminds Codex to use apply_patch when a shell command writes files through redirection or tee.",
+    "developerName": "fyq163",
+    "category": "Productivity",
+    "capabilities": ["Read"]
+  }
+}
