@@ -7,7 +7,27 @@ import shlex
 import sys
 
 
+HEREDOC_START = re.compile(r"<<-?\s*['\"]?([A-Za-z_]\w*)")
+HEREDOC_WRITE = re.compile(
+    r"\.write_text\(|\.write_bytes\("
+    r"|\bopen\s*\([^)]*['\"][waxu+]{1,2}['\"]"
+    r"|\bos\.replace\("
+    r"|\bshutil\.(?:copy|copy2|copyfile|move|rmtree)\b"
+)
+
+
+def heredoc_writes(command: str) -> bool:
+    """Detect file writes inside a heredoc body (e.g. python3 - <<'PY')."""
+    if not HEREDOC_START.search(command):
+        return False
+    return bool(HEREDOC_WRITE.search(command))
+
+
 def writes_file(command: str) -> bool:
+    if re.search(r"(?<!\S)(?:\d+)?>{1,2}(?![&])", command):
+        return True
+    if heredoc_writes(command):
+        return True
     if re.search(r"(?<!\S)(?:\d+)?>{1,2}(?![&])", command):
         return True
     try:
