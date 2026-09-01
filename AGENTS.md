@@ -67,6 +67,24 @@ each entry uses `source: "url"` + `path: "./"` pointing at the plugin's **own**
 repo root, pinned to a `sha`. Do not point Grok at the monorepo subdir — the
 fetched dir would be empty. `devops-ssh` lives in Azure; Grok may not fetch it.
 
+## command-audit serves two clients from one dir
+`plugins/command-audit/` is the single source for both clients:
+- Codex: `hooks.json` + `.codex-plugin/plugin.json` → PreToolUse hook on `Bash`.
+- pi: `extensions/command-audit.ts` (auto-discovered convention dir) → `tool_result`
+  handler that appends a reminder suggesting `edit`/`write`.
+
+Both call the same detector in `audit_command.py` — the TS side spawns `python3`
+with the Codex-shaped stdin JSON (`{"tool_name":"Bash","tool_input":{"command"}}`)
+and only reuses the verdict, not the wording (Codex nudges `apply_patch`, pi
+nudges `edit`/`write`). Tests: `test_audit_command.py` (rules),
+`test_pi_extension.mjs` (pi handler, needs node ≥23 for TS type stripping).
+
+Install the pi side by pointing at the plugin dir — pi adds it to
+`~/.pi/agent/settings.json` `packages` **without copying**:
+```
+pi install /Users/fyq/sources/agent-plugins/plugins/command-audit
+```
+
 ## Push gotchas
 Submodule remotes may be HTTPS and return 403 on push. Switch to SSH first:
 `git -C plugins/<name> remote set-url origin git@github.com:fyq163/<repo>.git`.
