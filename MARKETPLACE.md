@@ -16,7 +16,6 @@ This repo is a triple marketplace for **Codex** (`.agents/plugins/marketplace.js
 | **ponytail** | Codex |  |
 | **ponytail** | Codex |  |
 | **ponytail** | Codex |  |
-| **azure-agent-skills** | Codex | 193+ production-ready Azure skills covering compute, data, AI/ML, networking, security, and management. Built from Microsoft Learn and following the Agent Skills open standard. |
 | **azure-devops-board** | Codex: local | Curated Azure DevOps skills synced from MicrosoftDocs/Agent-Skills: work items & queries (azure-boards), orgs/agent pools/Analytics (azure-devops), YAML pipelines & service connections (azure-pipelines). |
 
 ## Install
