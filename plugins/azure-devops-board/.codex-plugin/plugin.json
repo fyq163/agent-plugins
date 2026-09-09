@@ -1,0 +1,20 @@
+{
+  "name": "azure-devops-board",
+  "version": "1.0.0",
+  "description": "Curated Azure DevOps skills synced from MicrosoftDocs/Agent-Skills: work items & queries (azure-boards), orgs/agent pools/Analytics (azure-devops), YAML pipelines & service connections (azure-pipelines).",
+  "author": {
+    "name": "fyq163",
+    "url": "https://github.com/fyq163"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "azure-devops", "azure-boards", "azure-pipelines"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Azure DevOps Board",
+    "shortDescription": "Azure Boards / DevOps / Pipelines skills",
+    "longDescription": "Three curated Azure DevOps skills (boards, devops, pipelines) mirrored from MicrosoftDocs/Agent-Skills; keep them in sync with plugins/azure-devops-board/mv-skills.sh.",
+    "developerName": "fyq163",
+    "category": "Productivity",
+    "capabilities": ["Read"]
+  }
+}
