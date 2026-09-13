@@ -56,6 +56,14 @@ hacks. The root marketplace is unaffected either way.
 | `devops-ssh` | Azure `git@ssh.dev.azure.com:v3/sebfan/oracle-devops/devops-ssh-skill` | `gh` CANNOT touch Azure — use Azure CLI/web |
 | `istoresos` | GitHub `fyq163/router-repair` | — |
 
+## Naming: osaka0 vs osaka1
+
+为区分两台 osaka（AI 经常搞混）：
+- `osaka` == `osaka1` == `100.127.152.237` (`tailscale-osaka1`, `161.33.20.114` public, x86_64, CentOS, 主节点)
+- `osaka0` == `osakarm64` == `100.127.152.239` / `217.142.232.97` (aarch64, ARM, 被动节点)
+
+AI 必须把 `osaka` 解析为 `osaka1`，禁止把任务发到 `osaka0`。`tailscale-*` 是同一主机的 Tailscale 路径。
+
 - `devop-ssh` was renamed to `devops-ssh` locally; the Azure repo is still
   `devops-ssh-skill`. Keep the local name consistent in both catalogs.
 - `mcp-ssh-manager` plugin manifest name is `mcp-ssh-manager` (the upstream
