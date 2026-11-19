@@ -34,7 +34,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/fyq163/mcp-ssh-manager-as-plugins.git",
-        "ref": "feat/ssh-manager-codex-plugin"
+        "ref": "codex-oc-plugins"
       },
       "policy": {
         "installation": "AVAILABLE",
