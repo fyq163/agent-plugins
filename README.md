@@ -23,15 +23,12 @@ agent-plugins/
 ## Install locally
 
 ```bash
-codex plugin marketplace add /Users/fyq/sources/agent-plugins
-codex plugin add <name>@fyq-agent-plugins
+git clone --recurse-submodules https://github.com/fyq163/agent-plugins.git
+cd agent-plugins
+codex plugin marketplace add "$PWD"
 ```
 
-For the standalone shell write audit:
-
-```bash
-codex plugin add command-audit@fyq-agent-plugins
-```
+Then install the plugins you need. See [MARKETPLACE.md](MARKETPLACE.md#install-by-plugin) for commands and setup notes for every plugin and supported client.
 
 ## Updating plugins
 
